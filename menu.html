@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cofty Solutions - Bizning Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="scc/menu.css">
+
+  </head>
+  <body>
+    
+    <div class="toast" id="toast">
+      <i
+        class="fa-solid fa-circle-check"
+        style="color: var(--accent); font-size: 20px"
+      ></i>
+      <span id="toast-message">Savatga qo‘shildi!</span>
+    </div>
+
+    <div class="modal-overlay" id="infoModal">
+      <div class="modal-box">
+        <i class="fa-solid fa-xmark close-modal" onclick="closeModal()"></i>
+        <img id="modalImg" src="" alt="Coffee" />
+        <h2 id="modalTitle">Kofe Nomi</h2>
+        <p id="modalDesc">
+          Kofe haqida batafsil ma'lumot bu yerda paydo bo'ladi.
+        </p>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <span class="price" id="modalPrice">$0.00</span>
+          <button class="btn-buy" id="modalBuyBtn">SOTIB OLISH</button>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <a href="coffe2.html" class="logo">
+        <i class="fa-solid fa-mug-hot" style="color: var(--accent)"></i> Cofty
+        solutions
+      </a>
+      <a href="index.html" class="btn-back"
+        ><i class="fa-solid fa-arrow-left"></i> Asosiy Sahifa</a
+      >
+    </header>
+
+    <div class="menu-title">
+      <h1>Bizning Menu</h1>
+      <p>Har bir finjonda mukammallik va unutilmas haqiqiy kofe ta'mi</p>
+    </div>
+
+    <main class="menu-grid">
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Espresso',
+            'Klassik va quyuq kofe turi. Yuqori bosim ostida maydalangan kofe donlaridan tayyorlanadi. Kuchli energiya beruvchi va haqiqiy kofe ishqibozlari uchun eng maʼqul tanlov.',
+            '$12.00',
+            'https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 120)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">120</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80"
+          alt="Espresso"
+        />
+        <h3>Espresso</h3>
+        <span class="coffee-tag">Strong</span>
+        <div class="card-footer">
+          <span class="price">$12.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Espresso');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+<!-- 1. Espresso Macchiato -->
+        <div class="coffee-card" onclick="openModal('Espresso Macchiato', 'Espresso shotining ustiga qo‘yilgan bir qoshiq quyuq sut ko‘pigi. Kuchli kofe taʼmini birozgina mayinlashtirishni xohlovchilar uchun.', '$13.50', 'https://images.unsplash.com/photo-1551887196-72e32fac7c3a?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 104)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">104</span></div>
+            <img src="https://images.unsplash.com/photo-1551887196-72e32fac7c3a?auto=format&fit=crop&w=400&q=80" alt="Espresso Macchiato">
+            <h3>Espresso Macchiato</h3>
+            <span class="coffee-tag">Intense Macchiato</span>
+            <div class="card-footer">
+                <span class="price">$13.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Espresso Macchiato')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 2. Iced Latte -->
+        <div class="coffee-card" onclick="openModal('Iced Latte', 'Muz bo‘laklari, sovuq sut va yangi damlangan espressoning ajoyib aralashmasi. Issiq kunlarda tetiklashish uchun eng mukammal tanlov.', '$16.00', 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 312)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">312</span></div>
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" alt="Iced Latte">
+            <h3>Iced Latte</h3>
+            <span class="coffee-tag">Cold Refreshing</span>
+            <div class="card-footer">
+                <span class="price">$16.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Iced Latte')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 3. White Chocolate Mocha -->
+        <div class="coffee-card" onclick="openModal('White Chocolate Mocha', 'Espresso, issiq sut va oq shokolad siropining shirin uyg‘unligi. Ustiga mayin qaymoq qatlami bilan bezatilgan shirin desert-kofe.', '$19.00', 'https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 215)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">215</span></div>
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80" alt="White Chocolate Mocha">
+            <h3>White Chocolate Mocha</h3>
+            <span class="coffee-tag">Sweet Premium</span>
+            <div class="card-footer">
+                <span class="price">$19.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('White Chocolate Mocha')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 4. Ristretto -->
+        <div class="coffee-card" onclick="openModal('Ristretto', 'Espressoga qaraganda kamroq suv va qisqaroq vaqt ichida tortib olinadigan juda quyuq kofe. Kamroq nordon, lekin nihoyatda kuchli va boy taʼmga ega.', '$11.00', 'https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 78)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">78</span></div>
+            <img src="https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80" alt="Ristretto">
+            <h3>Ristretto</h3>
+            <span class="coffee-tag">Super Strong</span>
+            <div class="card-footer">
+                <span class="price">$11.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Ristretto')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 5. Iced Americano -->
+        <div class="coffee-card" onclick="openModal('Iced Americano', 'Muzdek sovuq suv, ko‘plab muz bo‘laklari va ustidan quyilgan qo‘shaloq espresso shoti. Hech qanday shakarsiz, toza va tetiklantiruvchi qora kofe.', '$13.50', 'https://images.unsplash.com/photo-1551046713-b399f6f2f519?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 142)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">142</span></div>
+            <img src="https://images.unsplash.com/photo-1551046713-b399f6f2f519?auto=format&fit=crop&w=400&q=80" alt="Iced Americano">
+            <h3>Iced Americano</h3>
+            <span class="coffee-tag">Pure Cold</span>
+            <div class="card-footer">
+                <span class="price">$13.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Iced Americano')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 6. Frappuccino -->
+        <div class="coffee-card" onclick="openModal('Frappuccino', 'Kofe, muz, sut va shirin siroplarning blenderda maydalangan ko‘pikli aralashmasi. Ustiga tayyor qaymoq va shokolad sousi quyiladi.', '$20.00', 'https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 425)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">425</span></div>
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80" alt="Frappuccino">
+            <h3>Frappuccino</h3>
+            <span class="coffee-tag">Blended Ice</span>
+            <div class="card-footer">
+                <span class="price">$20.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Frappuccino')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 7. Cortado -->
+        <div class="coffee-card" onclick="openModal('Cortado', 'Teng miqdordagi espresso va issiq sut aralashmasi. Sut kofening nordonligini va taxirligini kamaytiradi, lekin kofe taʼmini butkul yopib ketmaydi.', '$14.50', 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 119)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">119</span></div>
+            <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80" alt="Cortado">
+            <h3>Cortado</h3>
+            <span class="coffee-tag">Spanish Balance</span>
+            <div class="card-footer">
+                <span class="price">$14.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Cortado')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 8. Vienna Coffee -->
+        <div class="coffee-card" onclick="openModal('Vienna Coffee', 'Ikki shot kuchli espresso ustiga sut o‘rniga quyuq, ko‘pirtirilgan shirin venacha qaymoq qo‘shib tayyorlanadigan anʼanaviy Yevropa ichimligi.', '$17.50', 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 167)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">167</span></div>
+            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80" alt="Vienna Coffee">
+            <h3>Vienna Coffee</h3>
+            <span class="coffee-tag">Elegant Cream</span>
+            <div class="card-footer">
+                <span class="price">$17.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Vienna Coffee')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 9. Turkish Coffee -->
+        <div class="coffee-card" onclick="openModal('Turkish Coffee', 'Maxsus mis idishda (Jazvada) qum ustida sekin qaynatib pishiriladigan turkcha kofe. Mayda kofe kukuni quyqalari bilan birga finjonga quyiladi.', '$12.50', 'https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 289)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">289</span></div>
+            <img src="https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80" alt="Turkish Coffee">
+            <h3>Turkish Coffee</h3>
+            <span class="coffee-tag">Traditional</span>
+            <div class="card-footer">
+                <span class="price">$12.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Turkish Coffee')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 10. Iced Caramel Macchiato -->
+        <div class="coffee-card" onclick="openModal('Iced Caramel Macchiato', 'Muz bo‘laklari to‘la finjonga vanil siropi, sovuq sut va espresso quyiladi, eng ustidan esa xushxo‘r karamel sousi chiziladi.', '$19.50', 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 390)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">390</span></div>
+            <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80" alt="Iced Caramel Macchiato">
+            <h3>Iced Caramel Macchiato</h3>
+            <span class="coffee-tag">Sweet & Icy</span>
+            <div class="card-footer">
+                <span class="price">$19.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Iced Caramel Macchiato')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 11. Con Panna -->
+        <div class="coffee-card" onclick="openModal('Con Panna', 'Espressoning toza va achchiq shoti ustiga siqilgan sovuq, shirin qaymoq qatlami. Achchiq va shirin taʼm kontrasti.', '$14.00', 'https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 92)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">92</span></div>
+            <img src="https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80" alt="Con Panna">
+            <h3>Con Panna</h3>
+            <span class="coffee-tag">Creamy Shot</span>
+            <div class="card-footer">
+                <span class="price">$14.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Con Panna')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 12. Hazelnut Latte -->
+        <div class="coffee-card" onclick="openModal('Hazelnut Latte', 'Klassik sutli lattening o‘rmon yong‘og‘i (fuduk) siropi bilan boyitilgan varianti. Yong‘oq hidi kofe bilan ajoyib tarzda birlashadi.', '$17.00', 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 203)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">203</span></div>
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80" alt="Hazelnut Latte">
+            <h3>Hazelnut Latte</h3>
+            <span class="coffee-tag">Nutty Aroma</span>
+            <div class="card-footer">
+                <span class="price">$17.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Hazelnut Latte')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 13. Nitro Cold Brew -->
+        <div class="coffee-card" onclick="openModal('Nitro Cold Brew', 'Maxsus azot gazi (nitrogen) bilan to‘yingan sovuq damlangan kofe. Xuddi pivo kabi quyuq va baxmaldek yumshoq ko‘pik hosil qiladi.', '$18.50', 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 156)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">156</span></div>
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" alt="Nitro Cold Brew">
+            <h3>Nitro Cold Brew</h3>
+            <span class="coffee-tag">Velvet Gas</span>
+            <div class="card-footer">
+                <span class="price">$18.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Nitro Cold Brew')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 14. Matcha Latte -->
+        <div class="coffee-card" onclick="openModal('Matcha Latte', 'Yaponiyaning yuqori sifatli yashil choy kukuni (Matcha) hamda issiq ko‘pirtirilgan sut aralashmasi. Antistress va sog‘lom energiya manbai.', '$16.00', 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 340)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">340</span></div>
+            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80" alt="Matcha Latte">
+            <h3>Matcha Latte</h3>
+            <span class="coffee-tag">Green Energy</span>
+            <div class="card-footer">
+                <span class="price">$16.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Matcha Latte')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 15. Hot Chocolate -->
+        <div class="coffee-card" onclick="openModal('Hot Chocolate', 'Eritilgan haqiqiy shokolad va quyuq sut aralashmasidan tayyorlangan qaynoq ichimlik. Kofesiz, lekin unutilmas darajada shirin lazzat.', '$15.00', 'https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 277)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">277</span></div>
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80" alt="Hot Chocolate">
+            <h3>Hot Chocolate</h3>
+            <span class="coffee-tag">Sweet Cocoa</span>
+            <div class="card-footer">
+                <span class="price">$15.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Hot Chocolate')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 16. Raf Coffee -->
+        <div class="coffee-card" onclick="openModal('Raf Coffee', 'Espresso, vanil shakari va suyuq qaymoqning birgalikda bug‘ yordamida ko‘pirtirilishidan olinadigan juda mayin va quyuq qaymoqli ichimlik.', '$18.00', 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 195)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">195</span></div>
+            <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80" alt="Raf Coffee">
+            <h3>Raf Coffee</h3>
+            <span class="coffee-tag">Creamy Russian</span>
+            <div class="card-footer">
+                <span class="price">$18.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Raf Coffee')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 17. Iced Mocha -->
+        <div class="coffee-card" onclick="openModal('Iced Mocha', 'Muz bo‘laklari ustiga quyilgan shokolad siropi, espresso va sovuq sut kombinatsiyasi. Shokoladli sovuq kofe shaydolari uchun.', '$17.50', 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 221)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">221</span></div>
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" alt="Iced Mocha">
+            <h3>Iced Mocha</h3>
+            <span class="coffee-tag">Choco Ice</span>
+            <div class="card-footer">
+                <span class="price">$17.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Iced Mocha')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 18. Vanilla Frappe -->
+        <div class="coffee-card" onclick="openModal('Vanilla Frappe', 'Muz, sut va tabiiy vanil ekstraktining kofe bilan blenderda maydalangan muzdek quyuq aralashmasi. Yozning eng xit ichimligi.', '$19.00', 'https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 305)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">305</span></div>
+            <img src="https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80" alt="Vanilla Frappe">
+            <h3>Vanilla Frappe</h3>
+            <span class="coffee-tag">Vanilla Frost</span>
+            <div class="card-footer">
+                <span class="price">$19.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Vanilla Frappe')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 19. Lugano Coffee -->
+        <div class="coffee-card" onclick="openModal('Lugano Coffee', 'Kuchli qora espresso ichiga bir bo‘lak achchiq shokolad tashlanib, ustidan birozgina dolchin sepilgan shvedcha uslubdagi kofe.', '$14.00', 'https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 84)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">84</span></div>
+            <img src="https://images.unsplash.com/photo-1510705315444-837e66e8cdc1?auto=format&fit=crop&w=400&q=80" alt="Lugano Coffee">
+            <h3>Lugano Coffee</h3>
+            <span class="coffee-tag">Dark Cinnamon</span>
+            <div class="card-footer">
+                <span class="price">$14.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Lugano Coffee')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 20. Pistachio Latte -->
+        <div class="coffee-card" onclick="openModal('Pistachio Latte', 'Yangi pishgan xushxo‘r pista (pistashka) pastasi, espresso va mayin ko‘pirtirilgan issiq sutning yashil-jigarrang rangdagi mazali uyg‘unligi.', '$18.50', 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 266)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">266</span></div>
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80" alt="Pistachio Latte">
+            <h3>Pistachio Latte</h3>
+            <span class="coffee-tag">Nutty Premium</span>
+            <div class="card-footer">
+                <span class="price">$18.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Pistachio Latte')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 21. Cinnamon Cappuccino -->
+        <div class="coffee-card" onclick="openModal('Cinnamon Cappuccino', 'Anʼanaviy kapuchino ustiga yangi maydalangan xushbo‘y dolchin (koritsa) kukuni mo‘l qilib sepilgan tetiklantiruvchi ichimlik.', '$15.50', 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 148)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">148</span></div>
+            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80" alt="Cinnamon Cappuccino">
+            <h3>Cinnamon Cappuccino</h3>
+            <span class="coffee-tag">Spicy Foam</span>
+            <div class="card-footer">
+                <span class="price">$15.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Cinnamon Cappuccino')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 22. Coconut Cold Brew -->
+        <div class="coffee-card" onclick="openModal('Coconut Cold Brew', 'Uzoq vaqt davomida sovuq damlangan silliq kofe ichiga tropik kokos suti va muz bo‘laklari qo‘shib tayyorlanadigan yengil ichimlik.', '$16.50', 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 173)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">173</span></div>
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" alt="Coconut Cold Brew">
+            <h3>Coconut Cold Brew</h3>
+            <span class="coffee-tag">Tropical Cold</span>
+            <div class="card-footer">
+                <span class="price">$16.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Coconut Cold Brew')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 23. Chocolate Brownie -->
+        <div class="coffee-card" onclick="openModal('Chocolate Brownie', 'Tashqi qismi qarsilloq, ichi esa yumshoq va quyuq shokoladli nam pasta bo‘lagi. Issiq kofe bilan isteʼmol qilish uchun eng yaxshi desert.', '$10.00', 'https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 412)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">412</span></div>
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80" alt="Chocolate Brownie">
+            <h3>Chocolate Brownie</h3>
+            <span class="coffee-tag">Bakery Sweet</span>
+            <div class="card-footer">
+                <span class="price">$10.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Chocolate Brownie')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 24. New York Cheesecake -->
+        <div class="coffee-card" onclick="openModal('New York Cheesecake', 'Pechenye asosi ustiga krem-pishloqdan tayyorlangan klassik va mayin pirog bo‘lagi. Og‘izda eriydigan o‘ziga xos taʼmga ega.', '$12.00', 'https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 385)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">385</span></div>
+            <img src="https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80" alt="New York Cheesecake">
+            <h3>New York Cheesecake</h3>
+            <span class="coffee-tag">Classic Cake</span>
+            <div class="card-footer">
+                <span class="price">$12.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('New York Cheesecake')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 25. Tiramisu -->
+        <div class="coffee-card" onclick="openModal('Tiramisu', 'Savoyardi pechenyelari, espresso kofesi va maskarpone pishloqli kremdan qatlam-qatlam qilib tayyorlangan mashhur italyancha kofe deserti.', '$13.00', 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 490)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">490</span></div>
+            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80" alt="Tiramisu">
+            <h3>Tiramisu</h3>
+            <span class="coffee-tag">Italian Dessert</span>
+            <div class="card-footer">
+                <span class="price">$13.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Tiramisu')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 26. Croissant Classic -->
+        <div class="coffee-card" onclick="openModal('Croissant Classic', 'Sariyog‘ bilan qatlam-qatlam qilib pishirilgan, ichi g‘ovak va usti qarsilloq bo‘lgan fransuzcha anʼanaviy ertalabki nonushta kruassani.', '$7.00', 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 233)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">233</span></div>
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80" alt="Croissant Classic">
+            <h3>Croissant Classic</h3>
+            <span class="coffee-tag">Fresh Bakery</span>
+            <div class="card-footer">
+                <span class="price">$7.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Croissant Classic')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 27. Almond Croissant -->
+        <div class="coffee-card" onclick="openModal('Almond Croissant', 'Ichiga bodom kremi (franjipan) solingan va ustiga bodom bo‘lakchalari hamda shakar kukuni sepib qayta pishirilgan shirin kruassan.', '$9.00', 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 188)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">188</span></div>
+            <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80" alt="Almond Croissant">
+            <h3>Almond Croissant</h3>
+            <span class="coffee-tag">Premium Sweet</span>
+            <div class="card-footer">
+                <span class="price">$9.00</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Almond Croissant')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 28. Red Velvet Cake -->
+        <div class="coffee-card" onclick="openModal('Red Velvet Cake', 'O‘ziga xos to‘q qizil rangli biskvit va mayin krem-pishloq (cream cheese) qatlamlaridan iborat chiroyli va mazali tort bo‘lagi.', '$11.50', 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 299)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">299</span></div>
+            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80" alt="Red Velvet Cake">
+            <h3>Red Velvet Cake</h3>
+            <span class="coffee-tag">Elegant Cake</span>
+            <div class="card-footer">
+                <span class="price">$11.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Red Velvet Cake')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 29. Honey Medovik -->
+        <div class="coffee-card" onclick="openModal('Honey Medovik', 'Tabiiy asal taʼmi kelib turadigan ko‘plab yupqa biskvit qatlamlari va smetanali maxsus kremdan tayyorlangan anʼanaviy asalli tort.', '$8.50', 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 341)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">341</span></div>
+            <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80" alt="Honey Medovik">
+            <h3>Honey Medovik</h3>
+            <span class="coffee-tag">Sweet Honey</span>
+            <div class="card-footer">
+                <span class="price">$8.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Honey Medovik')">BUY NOW</button>
+            </div>
+        </div>
+
+        <!-- 30. Macarons Set -->
+        <div class="coffee-card" onclick="openModal('Macarons Set', 'Turlicha rang va taʼmlarga ega bo‘lgan 3 donadan iborat fransuzcha bodom unli kichik shirinliklar to‘plami.', '$9.50', 'https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80', this)">
+            <div class="likes" onclick="toggleLike(event, this, 254)"><i class="fa-solid fa-thumbs-up"></i> <span class="count">254</span></div>
+            <img src="https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80" alt="Macarons Set">
+            <h3>Macarons Set</h3>
+            <span class="coffee-tag">French Style</span>
+            <div class="card-footer">
+                <span class="price">$9.50</span>
+                <button class="btn-buy" onclick="event.stopPropagation(); buyCoffee('Macarons Set')">BUY NOW</button>
+            </div>
+        </div>
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Cappuccino',
+            'Espresso, issiq sut va quyuq sut ko‘pigining mukammal balansi. Ustiga dolchin yoki shokolad kukuni sepib tortiladi. Mayin taʼm va xushbo‘y hid uyg‘unligi.',
+            '$15.00',
+            'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 240)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">240</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80"
+          alt="Cappuccino"
+        />
+        <h3>Cappuccino</h3>
+        <span class="coffee-tag">Classic</span>
+        <div class="card-footer">
+          <span class="price">$15.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Cappuccino');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Caffe Latte',
+            'Ko‘p miqdordagi issiq sut va bir qism espressodan iborat ichimlik. Latte o‘zining nihoyatda yumshoq va sutli taʼmi hamda ustidagi chiroyli latte-art rasmlari bilan mashhur.',
+            '$16.00',
+            'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 185)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">185</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80"
+          alt="Caffe Latte"
+        />
+        <h3>Caffe Latte</h3>
+        <span class="coffee-tag">Mild Milk</span>
+        <div class="card-footer">
+          <span class="price">$16.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Caffe Latte');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Americano',
+            'Espresso shotiga issiq suv qo‘shish orqali tayyorlanadigan ichimlik. Espresso kabi kuchli emas, lekin kofening barcha chuqur hid va taʼmlarini o‘zida saqlab qoladi.',
+            '$13.00',
+            'https://images.unsplash.com/photo-1551046713-b399f6f2f519?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 95)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">95</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1551046713-b399f6f2f519?auto=format&fit=crop&w=400&q=80"
+          alt="Americano"
+        />
+        <h3>Americano</h3>
+        <span class="coffee-tag">Light Black</span>
+        <div class="card-footer">
+          <span class="price">$13.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Americano');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Caramel Macchiato',
+            'Vanilli sirop, quyuq sut ko‘pigi, espresso va eng ustiga quyiladigan shirin karamel sousi kombinatsiyasi. Shirinliksevarlar uchun ajoyib desert ichimlik.',
+            '$18.00',
+            'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 310)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">310</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80"
+          alt="Caramel Macchiato"
+        />
+        <h3>Caramel Macchiato</h3>
+        <span class="coffee-tag">Sweet Style</span>
+        <div class="card-footer">
+          <span class="price">$18.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Caramel Macchiato');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Caffe Mocha',
+            'Espresso va issiq sutga boy shokolad siropi yoki kukuni qo‘shib tayyorlanadi. Shokolad va kofe uyg‘unligidan yaratilgan lazzatli ichimlik.',
+            '$17.00',
+            'https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 150)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">150</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1572442388796-11668a72063a?auto=format&fit=crop&w=400&q=80"
+          alt="Caffe Mocha"
+        />
+        <h3>Caffe Mocha</h3>
+        <span class="coffee-tag">Chocolate Fusion</span>
+        <div class="card-footer">
+          <span class="price">$17.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Caffe Mocha');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Flat White',
+            'Avstraliyada o‘ylab topilgan ichimlik. Ikki shot espresso va mikrokopinli issiq sut aralashmasi. Lattedan ko‘ra kofe taʼmi kuchliroq va quyuqroq seziladi.',
+            '$16.50',
+            'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 112)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">112</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80"
+          alt="Flat White"
+        />
+        <h3>Flat White</h3>
+        <span class="coffee-tag">Velvety Rich</span>
+        <div class="card-footer">
+          <span class="price">$16.50</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Flat White');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Irish Coffee',
+            'Issiq kofe, haqiqiy qaymoq qatlami va shakar aralashmasidan tayyorlanadigan isituvchi kofe turi. Qish va sovuq kunlarda tanani yayratish uchun ideal ichimlik.',
+            '$22.00',
+            'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 88)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">88</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80"
+          alt="Irish Coffee"
+        />
+        <h3>Irish Coffee</h3>
+        <span class="coffee-tag">Warm & Creamy</span>
+        <div class="card-footer">
+          <span class="price">$22.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Irish Coffee');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Affogato',
+            'Bir shorva qoshiq vanilli muzqaymoq ustiga issiq quyuq espresso shotini quyish orqali hosil qilinadigan italyancha kofe-desert anʼanasi.',
+            '$14.00',
+            'https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 265)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">265</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&w=400&q=80"
+          alt="Affogato"
+        />
+        <h3>Affogato</h3>
+        <span class="coffee-tag">Ice & Espresso</span>
+        <div class="card-footer">
+          <span class="price">$14.00</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Affogato');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="coffee-card"
+        onclick="
+          openModal(
+            'Cold Brew',
+            'Yanchilgan kofe donlarining sovuq suvda 12-24 soat davomida ivitilib damlanishidan olinadigan tetiklashtiruvchi muzdek kofe ichimligi. Nordonligi past va juda silliq taʼmga ega.',
+            '$15.50',
+            'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80',
+            this,
+          )
+        "
+      >
+        <div class="likes" onclick="toggleLike(event, this, 198)">
+          <i class="fa-solid fa-thumbs-up"></i> <span class="count">198</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80"
+          alt="Cold Brew"
+        />
+        <h3>Cold Brew</h3>
+        <span class="coffee-tag">Chilled Smooth</span>
+        <div class="card-footer">
+          <span class="price">$15.50</span>
+          <button
+            class="btn-buy"
+            onclick="
+              event.stopPropagation();
+              buyCoffee('Cold Brew');
+            "
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+    </main>
+
+     <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      
+      <!-- Brend va ijtimoiy tarmoqlar -->
+      <div class="footer-brand">
+        <h3><i class="fa-solid fa-mug-hot"></i> Cofty solutions</h3>
+        <p>Sifatli qahva va zamonaviy raqamli yechimlarning mukammal birlashmasi. Biz har bir detalda professionallikni qadrlaymiz.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/khusanovv__offical_/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+          <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Sayt Navigatsiyasi -->
+      <div class="footer-links">
+        <h4>Tezkor Linklar</h4>
+        <ul>
+          <li><a href="index.html">Asosiy Sahifa</a></li>
+          <li><a href="menu.html">Kofe Menyusi</a></li>
+          <li><a href="blog.html">Foydali Blog</a></li>
+          <li><a href="contact.html">Aloqa Bo'limi</a></li>
+        </ul>
+      </div>
+
+      <!-- Aloqa ma'lumotlari -->
+      <div class="footer-links">
+        <h4>Kontaktlar</h4>
+        <ul>
+          <li><a href="mailto:xxusanovv228@gmail.com"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> xxusanovv228@gmail.com</a></li>
+          <li><a href="tel:+998000000000"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +998 00 000 00 00</a></li>
+          <li><a><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Samarqand, O'zbekiston</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Eng pastki mualliflik qismi -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cofty solutions. Barcha huquqlar himoyalangan.</p>
+      <p>Created by: <a href="https://www.instagram.com/khusanovv__offical_/" target="_blank">Xumoyun Xusanov</a></p>
+    </div>
+  </footer>
+  </body>
+  <script src="javasc/menu.js"></script>
+</html>

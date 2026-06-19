@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aloqa Bo'limi</title>
+<!-- Google Fonts va FontAwesome Ulanishi -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="scc/contact.css">
+</head>
+<body>
+
+<!-- ─── HEADER / NAVIGATSIYA PANEL ─── -->
+<header class="main-header">
+  <div class="nav-container">
+    <!-- Logotip qismi -->
+    <a href="#" class="brand-logo">
+      <i class="fa-solid fa-mug-hot"></i>
+      Cofty solutions
+    </a>
+    <!-- Orqaga qaytish havolasi -->
+    <a href="index.html" class="back-home-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      Asosiy Sahifa
+    </a>
+  </div>
+</header>
+
+<!-- ─── CONTACT SECTION ─── -->
+<section class="contact-section">
+  <!-- Sarlavha Qismi -->
+  <div class="section-header">
+    <p class="section-eyebrow">Biz bilan bog'lanish</p>
+    <h2 class="section-title">Sizni eshitishdan xursandmiz</h2>
+  </div>
+
+  <!-- Oq blokli Asosiy Konteyner -->
+  <div class="contact-container">
+    
+    <!-- Chap tomon: Matn va Aloqa Ma'lumotlari -->
+    <div class="contact-info">
+      <h3 class="contact-info-title">Sizga qanday yordam bera olamiz?</h3>
+      <p class="contact-info-desc">Kofe retseptlari, hamkorlik takliflari yoki platformamiz bo'yicha savollaringiz bo'lsa, xabar qoldiring yoki to'g'ridan-to'g'ri bog'laning.</p>
+      
+      <div class="contact-details">
+        <!-- Email -->
+        <div class="contact-item">
+          <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-text">
+            <h4>Email Manzil</h4>
+            <p><a href="mailto:xxusanovv228@gmail.com">xxusanovv228@gmail.com</a></p>
+          </div>
+        </div>
+
+        <!-- Telefon -->
+        <div class="contact-item">
+          <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+          <div class="contact-text">
+            <h4>Telefon Raqam</h4>
+            <p><a href="tel:+998000000000">+998 00 000 00 00</a></p>
+          </div>
+        </div>
+
+        <!-- Manzil -->
+        <div class="contact-item">
+          <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-text">
+            <h4>Bizning Manzil</h4>
+            <p>Samarqand, O‘zbekiston</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- O'ng tomon: Kulrang ichki blokli Forma qismi -->
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="name">Ismingiz</label>
+        <input type="text" id="name" class="form-input" placeholder="Ismingizni kiriting" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Emailingiz</label>
+        <input type="email" id="email" class="form-input" placeholder="Email manzilingizni kiriting" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Xabaringiz</label>
+        <textarea id="message" class="form-input" placeholder="Xabaringizni bu yerga yozing..." required></textarea>
+      </div>
+      
+      <button type="submit" class="btn-submit">
+        <i class="fa-solid fa-paper-plane"></i> Xabarni yuborish
+      </button>
+    </form>
+
+  </div>
+</section>
+
+<!-- Bildirishnomalar uchun joy -->
+<div class="toast-container" id="toast-container"></div>
+
+
+</body>
+<script src="javasc/contact.js"></script>
+</html>

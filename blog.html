@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cofty Solutions – Kofe Blogi va Maqolalar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="scc/blog.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <i class="fa-solid fa-mug-hot"></i>
+      Cofty Solutions
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Asosiy</a></li>
+      <li><a href="#blog">Kofe Blogi</a></li>
+      <li><a href="contact.html">Aloqa</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menyu" onclick="toggleMobileNav()">
+      <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" onclick="closeMobileNav()">Asosiy</a>
+    <a href="#blog" onclick="closeMobileNav()">Kofe Blogi</a>
+    <a href="#contact" onclick="closeMobileNav()">Aloqa</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-eyebrow"><i class="fa-solid fa-graduation-cap"></i> &nbsp; Kofe ensiklopediyasi</span>
+      <h1 class="hero-title">KOFE BLOGI &<br><span>RETSEPTLAR</span></h1>
+      <p class="hero-desc">Dunyoning eng mashhur 15 xil kofe turlari, ularning mukammal tarkibi va baristalardan professional tayyorlash sirlari endi bir joyda jamlangan.</p>
+      <a href="#blog" class="btn-primary">
+        <i class="fa-solid fa-book-open"></i> Maqolalarni o'qish
+      </a>
+    </div>
+    <div class="hero-img-wrap">
+      <img
+        class="hero-img"
+        src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80"
+        alt="Premium kofe donlari"
+        loading="eager"
+      >
+    </div>
+  </div>
+</section>
+
+<div class="blog-section" id="blog">
+  <div class="section-header">
+    <p class="section-eyebrow">Bilim, Retsept va Ilhom</p>
+    <h2 class="section-title">Kofe Olami Maqolalari</h2>
+  </div>
+
+  <div class="blog-controls">
+    <div class="search-wrap">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" class="search-input" id="blog-search" placeholder="Kofe turi yoki retseptlarni qidiring..." oninput="filterBlog()">
+    </div>
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab active" data-cat="all">Hamma maqolalar</button>
+      <button class="filter-tab" data-cat="retsept">Klassik Retseptlar</button>
+      <button class="filter-tab" data-cat="madaniyat">Kofe Madaniyati</button>
+      <button class="filter-tab" data-cat="maslahat">Barista Maslahatlari</button>
+    </div>
+  </div>
+
+  <div class="blog-grid" id="blog-grid">
+    <div class="no-results" id="no-results">Hech qanday maqola topilmadi 🔍</div>
+  </div>
+</div>
+
+<footer id="contact">
+  <p style="font-size:1.2rem; font-weight:700; color:#fff; margin-bottom:8px;">
+    <i class="fa-solid fa-mug-hot" style="color:var(--accent)"></i> Cofty Solutions
+  </p>
+  <p>Toshkent, O'zbekiston &nbsp;|&nbsp; <strong>+998 90 123 45 67</strong> &nbsp;|&nbsp; <strong>info@cofty.uz</strong></p>
+  <p style="margin-top:16px; font-size:0.78rem; opacity:0.45;">© 2026 Cofty Solutions. Barcha huquqlar himoyalangan.</p>
+</footer>
+
+<div class="modal-overlay" id="blog-modal" onclick="handleOverlayClick(event,'blog-modal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('blog-modal')"><i class="fa-solid fa-xmark"></i></button>
+    <img class="blog-modal-img" id="bm-img" src="" alt="">
+    <div class="blog-modal-body">
+      <p style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px" id="bm-cat"></p>
+      <h2 class="blog-modal-title" id="bm-title"></h2>
+      <p class="blog-modal-meta" id="bm-meta"></p>
+      
+      <p class="modal-section-label" id="bm-ing-label"><i class="fa-solid fa-list-ul"></i> &nbsp; Kerakli Mahsulotlar</p>
+      <div class="modal-ingredients" id="bm-ingredients"></div>
+      
+      <p class="modal-section-label"><i class="fa-solid fa-mortar-pestle"></i> &nbsp; Batafsil Ma'lumot / Tayyorlanishi</p>
+      <div class="blog-modal-content" id="bm-content"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<
+</body>
+<script src="javasc/blog.js"></script>
+</html>
