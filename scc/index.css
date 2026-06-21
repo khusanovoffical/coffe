@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. BAZA VA UNIVERSAL STILLAR
-   ========================================================================== */
 *, *::before, *::after { 
   box-sizing: border-box; 
   margin: 0; 
@@ -27,9 +24,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ==========================================================================
-   2. HEADER & NAVIGATSIYA (KOMPYUTER VERSIYASI)
-   ========================================================================== */
+/* ─── HEADER & NAVIGATSIYA ─── */
 .main-header {
   width: 100%;
   background: rgba(243, 220, 208, 0.95);
@@ -121,11 +116,12 @@ body {
   box-shadow: 0 6px 20px rgba(188,138,111,0.3);
 }
 
-/* Katta ekranda butunlay yashirin turadigan Bars elementlari logicasi */
+/* INPUT INPUTNI MUTLOQ YASHIRISH (GALOCHKA KO'RINMAYDI) */
 #menu-check {
-  display: none;
+  display: none !important;
 }
 
+/* BARS TUGMASI KOMPYUTERDA MUTLOQ KO'RINMAYDI */
 .menu-bars-btn {
   display: none;
   font-size: 1.6rem;
@@ -135,9 +131,7 @@ body {
   z-index: 1002;
 }
 
-/* ==========================================================================
-   3. HERO SECTION (ASOSIY QISM)
-   ========================================================================== */
+/* ─── HERO SECTION ─── */
 .hero-section {
   min-height: 95vh;
   display: flex;
@@ -244,9 +238,7 @@ body {
   transform: rotate(0deg) scale(1.02);
 }
 
-/* ==========================================================================
-   4. SERVICES SECTION (XIZMATLAR)
-   ========================================================================== */
+/* ─── SERVICES SECTION ─── */
 .services-section {
   background: var(--white);
   padding: 100px 5%;
@@ -312,9 +304,7 @@ body {
   line-height: 1.6;
 }
 
-/* ==========================================================================
-   5. STATS BANNER (STATISTIKA)
-   ========================================================================== */
+/* ─── STATS BANNER ─── */
 .stats-section {
   padding: 80px 5%;
   max-width: 1200px;
@@ -346,9 +336,7 @@ body {
   text-transform: uppercase;
 }
 
-/* ==========================================================================
-   6. FOOTER (PASTKI QISM)
-   ========================================================================== */
+/* ─── FOOTER ─── */
 .main-footer {
   background: #1a1210;
   color: rgba(255,255,255,0.7);
@@ -453,31 +441,31 @@ body {
 }
 
 /* ==========================================================================
-   7. RESPONSIVE BO'LIMI (HAMMA QURILMALAR VA BARS MANTIQI)
+   7. DYNAMIC RESPONSIVE BO'LIMI
    ========================================================================== */
 
-/* ─── Katta planshetlar uchun (max-width: 1024px) ─── */
+/* ─── Katta planshetlar (max-width: 1024px) ─── */
 @media (max-width: 1024px) {
   .hero-container { gap: 40px; }
   .hero-img { max-width: 400px; height: 420px; }
 }
 
-/* ─── Header siqilgan holat: Planshet va Telefonlar (max-width: 768px) ─── */
+/* ─── FAQAT HEADER SIQILGAN KICHIK QURILMALARDA (max-width: 768px) ─── */
 @media (max-width: 768px) {
   .main-header {
     padding: 15px 5%;
   }
 
-  /* Aynan mana shu ekranda uchta chiziqchali BARS tugmasi paydo bo'ladi */
+  /* FAQAT SHU YERDA BARS TUGMASI CHIQADI */
   .menu-bars-btn {
     display: block;
   }
   
   .btn-creator { 
-    display: none; /* Mobil ekranda joyni tejash uchun yashiriladi */
+    display: none; 
   } 
 
-  /* Oddiy navigatsiya menyusi yashirin panel ko'rinishiga o'tadi */
+  /* Oddiy menyu panel shakliga o'tadi va yashirin turadi */
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -492,7 +480,6 @@ body {
     text-align: center;
     border-bottom: 1.5px solid rgba(35,25,21,0.06);
     
-    /* Panelni boshlang'ich yashirin holati */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
@@ -500,17 +487,17 @@ body {
     z-index: 1001;
   }
 
-  /* BARS TUGMASI BOSILGANDA (CHECKED BO'LGANDA) MENYUNI CHIQARISH */
+  /* BARS BOSILGANDA MENYUNI CHIQARISH */
   #menu-check:checked ~ .nav-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
 
-  /* Kontent qismlarini mobilga moslab vertikal holatga o'tkazish */
+  /* Mobil uchun struktura */
   .hero-section { padding-top: 140px; }
   .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-  .hero-image-wrapper { order: -1; } /* Rasm matndan tepaga chiqadi */
+  .hero-image-wrapper { order: -1; } 
   .hero-img { height: 350px; max-width: 100%; transform: rotate(0deg); }
   .hero-cta-group { justify-content: center; }
 
